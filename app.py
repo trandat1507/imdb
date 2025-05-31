@@ -4,8 +4,8 @@ import joblib
 
 # Load dữ liệu phim
 st.write("🔄 Đang load dữ liệu IMDb...")
-titles_df = pd.read_csv("title.basics.tsv", sep='\t', na_values='\\N')
-ratings_df = pd.read_csv("title.ratings.tsv", sep='\t')
+titles_df = pd.read_csv("title.basics.csv", sep='\t', na_values='\\N')
+ratings_df = pd.read_csv("title.ratings.csv", sep='\t')
 movies_df = pd.merge(titles_df, ratings_df, on='tconst')
 movies_df = movies_df[(movies_df['titleType'] == 'movie') & (movies_df['averageRating'].notnull())]
 movies_df = movies_df[['primaryTitle', 'genres', 'startYear', 'averageRating', 'numVotes']]
